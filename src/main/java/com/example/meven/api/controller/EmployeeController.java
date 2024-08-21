@@ -13,8 +13,8 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @PostMapping("/employee/{id}")
-    public Employee updateEmployee(@PathVariable final Long id,@RequestBody Employee employee) {
+    @PostMapping("/employee")
+    public Employee updateEmployee(@RequestBody Employee employee) {
              return employeeService.updateEmployee(employee);
     }
 
@@ -23,7 +23,7 @@ public class EmployeeController {
         return employeeService.getEmployee(id);
     }
 
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/employee/{id}/delete")
     public void deleteEmployee(@PathVariable("id") final Long id) {
         employeeService.deleteEmployee(id);
     }

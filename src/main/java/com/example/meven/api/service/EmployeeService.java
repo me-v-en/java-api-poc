@@ -28,26 +28,7 @@ public class EmployeeService {
     }
 
     public Employee updateEmployee(final Employee employee){
-        Optional<Employee> e =this.getEmployee(employee.getId());
-        if(e.isPresent()){
-            Employee updatedEmployee = e.get();
-            if(employee.getFirstName() != null){
-                updatedEmployee.setFirstName(employee.getFirstName());
-            }
-            if(employee.getLastName() != null){
-                updatedEmployee.setLastName(employee.getLastName());
-            }
-            if(employee.getMail() != null){
-                updatedEmployee.setMail(employee.getMail());
-            }
-            if(employee.getPassword() != null){
-                updatedEmployee.setPassword(employee.getPassword());
-            }
-
-            employeeRepository.save(updatedEmployee);
-            return updatedEmployee;
-        }
-        return null;
+            return employeeRepository.save(employee);
     }
 
 }

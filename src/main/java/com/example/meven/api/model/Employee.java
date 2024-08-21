@@ -22,4 +22,9 @@ public class Employee {
     private String mail;
 
     private String password;
+
+    @Override
+    public String toString(){
+        return this.firstName + " " + this.lastName;
+    }
 }

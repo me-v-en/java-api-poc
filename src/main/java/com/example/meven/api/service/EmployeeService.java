@@ -27,7 +27,7 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    public Employee updateEmployee(final Employee employee){
+    public Employee saveEmployee(final Employee employee){
             return employeeRepository.save(employee);
     }
 

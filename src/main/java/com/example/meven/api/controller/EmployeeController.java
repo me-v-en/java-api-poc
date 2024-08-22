@@ -14,8 +14,41 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping("/employee")
-    public Employee updateEmployee(@RequestBody Employee employee) {
-             return employeeService.updateEmployee(employee);
+    public Employee createEmployee(@RequestBody Employee employee) {
+        return employeeService.saveEmployee(employee);
+    }
+
+    @PutMapping("/employee/{id}")
+    public Employee updateEmployee(@PathVariable("id") final Long id, @RequestBody Employee employee) {
+        Optional<Employee> e = employeeService.getEmployee(id);
+        if (e.isPresent()) {
+            Employee employeeToUpdate = e.get();
+
+            // Update the fields
+            final String firstName = employee.getFirstName();
+            if (firstName != null) {
+                employeeToUpdate.setFirstName(firstName);
+            }
+
+            final String lastName = employee.getLastName();
+            if (lastName != null) {
+                employeeToUpdate.setLastName(lastName);
+            }
+
+            final String mail = employee.getMail();
+            if (mail != null) {
+                employeeToUpdate.setMail(mail);
+            }
+
+            final String password = employee.getPassword();
+            if (password != null) {
+                employeeToUpdate.setPassword(password);
+            }
+
+            // Save the employee entity
+            return employeeService.saveEmployee(employee);
+        }
+        return null;
     }
 
     @GetMapping("/employee/{id}")

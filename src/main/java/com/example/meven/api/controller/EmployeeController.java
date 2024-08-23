@@ -19,7 +19,7 @@ public class EmployeeController {
     }
 
     @PutMapping("/employee/{id}")
-    public Employee updateEmployee(@PathVariable("id") final Long id, @RequestBody Employee employee) {
+    public Employee updateEmployee(@PathVariable("id") final int id, @RequestBody Employee employee) {
         Optional<Employee> e = employeeService.getEmployee(id);
         if (e.isPresent()) {
             Employee employeeToUpdate = e.get();
@@ -52,12 +52,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee/{id}")
-    public Optional<Employee> getEmployee(@PathVariable("id") final Long id) {
+    public Optional<Employee> getEmployee(@PathVariable("id") final int id) {
         return employeeService.getEmployee(id);
     }
 
-    @DeleteMapping("/employee/{id}/delete")
-    public void deleteEmployee(@PathVariable("id") final Long id) {
+    @DeleteMapping("/employee/delete/{id}")
+    public void deleteEmployee(@PathVariable("id") final int id) {
         employeeService.deleteEmployee(id);
     }
 

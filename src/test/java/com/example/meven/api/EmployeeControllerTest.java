@@ -73,7 +73,7 @@ public class EmployeeControllerTest {
 
     @Test
     public void testDeleteEmployee() throws Exception {
-        mockMvc.perform(delete("/employee/4/delete"))
+        mockMvc.perform(delete("/employee/delete/4"))
                 .andExpect(status().isOk());
 
         System.out.println("Delete employee test, does he still exist : "+employeeService.getEmployee(4L));
